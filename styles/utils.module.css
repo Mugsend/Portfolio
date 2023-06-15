@@ -1,0 +1,86 @@
+.header {
+	background: linear-gradient(transparent 0, rgba(0, 0, 0, 0.5));
+}
+.profile {
+	display: flex;
+}
+.profile_img {
+	border-radius: 50%;
+}
+.profile_name {
+	margin-left: 25px;
+	margin-top: 25px;
+	font-size: 70px;
+	line-height: 1;
+}
+
+.skill {
+	margin: 7px;
+	text-align: center;
+	height: 215px;
+	width: 160px;
+	padding: 15px;
+	border-radius: 5px;
+	background: #181818;
+}
+.skills {
+	background: linear-gradient(rgb(0, 0, 0, 0.6) 0, #121212 50%);
+}
+.skills_row {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+.projects {
+	background-color: #121212;
+}
+.project {
+	display: flex;
+	align-items: center;
+	background: #181818;
+	border-radius: 10px;
+	padding: 15px;
+	margin: 20px 0;
+}
+.project_img {
+	border-radius: 10%;
+	width: 200px;
+	height: 200px;
+	position: relative;
+}
+.project_desc {
+	width: 100%;
+	padding: 0 20px;
+}
+.about {
+	background: linear-gradient(#121212 0%, rgb(0, 0, 0, 0.6) 50%);
+}
+.about_card {
+	border-radius: 10px;
+	background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%),
+		url(../public/images/about-img.jpg);
+	background-size: cover;
+	background-position: 50% 50%;
+	height: 512px;
+	position: relative;
+}
+.about_text {
+	position: absolute;
+	bottom: 0;
+	padding: 20px;
+}
+.contacts {
+	background: linear-gradient(rgba(0, 0, 0, 0.5) 0, transparent);
+}
+.contact {
+	margin: 10px;
+	display: flex;
+	align-items: center;
+	background: #181818;
+	padding: 10px;
+	border-radius: 4px;
+	width: fit-content;
+}
+.contact > a {
+	margin-left: 10px;
+}
