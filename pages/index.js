@@ -8,9 +8,8 @@ function Header() {
 	return (
 		<Section>
 			<div className={utilStyles.header}>
-				<h1>
-					Hey!<br></br>Welcome to my Portfolio.
-				</h1>
+				<h1>Hey!</h1>
+				<h2>Welcome to my Portfolio.</h2>
 				<Profile />
 			</div>
 		</Section>

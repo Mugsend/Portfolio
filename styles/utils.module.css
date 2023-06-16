@@ -30,7 +30,7 @@
 	background: linear-gradient(rgb(0, 0, 0, 0.6) 0, #121212 50%);
 }
 .skills_row_container {
-	overflow-x: scroll;
+	overflow-x: auto;
 }
 .skills_row {
 	display: flex;
