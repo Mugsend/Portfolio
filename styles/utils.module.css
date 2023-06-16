@@ -15,13 +15,12 @@
 }
 
 .skill {
-	margin: 7px;
 	text-align: center;
-	height: 215px;
-	width: 160px;
-	padding: 15px;
-	border-radius: 5px;
+	border-radius: 4px;
+	padding: 0.25em 0 0.2em;
 	background: #181818;
+	margin: 5px;
+	width: 100px;
 }
 .skills {
 	background: linear-gradient(rgb(0, 0, 0, 0.6) 0, #121212 50%);
@@ -38,22 +37,25 @@
 	display: flex;
 	align-items: center;
 	background: #181818;
-	border-radius: 10px;
-	padding: 15px;
-	margin: 20px 0;
+	border-radius: 4px;
+	padding: 10px;
+	margin: 10px 0;
 }
-.project_img {
-	border-radius: 10%;
-	width: 200px;
-	height: 200px;
-	position: relative;
-}
-.project_desc {
-	width: 100%;
-	padding: 0 20px;
-}
-.about {
+
+.contacts {
 	background: linear-gradient(#121212 0%, rgb(0, 0, 0, 0.6) 50%);
+}
+.contact {
+	margin: 10px 0;
+	display: flex;
+	align-items: center;
+	background: #181818;
+	padding: 10px;
+	border-radius: 4px;
+}
+
+.about {
+	background: linear-gradient(rgba(0, 0, 0, 0.5) 0, transparent);
 }
 .about_card {
 	border-radius: 10px;
@@ -69,18 +71,15 @@
 	bottom: 0;
 	padding: 20px;
 }
-.contacts {
-	background: linear-gradient(rgba(0, 0, 0, 0.5) 0, transparent);
-}
-.contact {
-	margin: 10px;
-	display: flex;
-	align-items: center;
-	background: #181818;
-	padding: 10px;
-	border-radius: 4px;
-	width: fit-content;
-}
-.contact > a {
-	margin-left: 10px;
+
+@media (max-width: 600px) {
+	.profile {
+		flex-direction: column;
+	}
+	.profile_name {
+		margin-left: 0;
+		margin-top: 25px;
+		font-size: 40px;
+		line-height: 1;
+	}
 }
