@@ -29,10 +29,14 @@
 .skills {
 	background: linear-gradient(rgb(0, 0, 0, 0.6) 0, #121212 50%);
 }
+.skills_row_container {
+	overflow-x: scroll;
+}
 .skills_row {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+	width: max-content;
 }
 .skills_row > :nth-child(1) > svg {
 	fill: #d1d1d1;

@@ -173,10 +173,12 @@ function Skills() {
 		<Section>
 			<div className={utilStyles.skills}>
 				<h2>Skills</h2>
-				<div className={utilStyles.skills_row}>
-					{skills.map(({ name, svg, index }) => (
-						<Skill key={index} name={name} svg={svg} />
-					))}
+				<div className={utilStyles.skills_row_container}>
+					<div className={utilStyles.skills_row}>
+						{skills.map(({ name, svg, index }) => (
+							<Skill key={index} name={name} svg={svg} />
+						))}
+					</div>
 				</div>
 			</div>
 		</Section>
