@@ -1,9 +1,10 @@
+import Head from 'next/head';
 import Image from 'next/image';
 import utilStyles from '../styles/utils.module.css';
 import Section from '../components/section';
 import profileImg from '../public/images/profile.jpg';
-import projectImg from '../public/images/project/sudoku-solver.jpeg';
 import { useState } from 'react';
+import { favicon } from '../public/images/favicon.ico';
 function Header() {
 	return (
 		<Section>
@@ -25,37 +26,52 @@ function Profile() {
 				width={200}
 				alt="Sourabh"
 			/>
-			<h1 className={utilStyles.profile_name}>
-				Saurabh <br></br>Chaudhary
-			</h1>
+			<div>
+				<h1 className={utilStyles.profile_name}>
+					Saurabh <br></br>Chaudhary
+				</h1>
+				<a
+					target="_blank"
+					href="https://open.spotify.com/user/31lls5x2i7gpgokdmmoi2xg2prmq?si=f7c263b3b640497b"
+				>
+					Music
+				</a>{' '}
+				<a target="_blank" href="https://github.com/Mugsend">
+					Programming
+				</a>
+			</div>
 		</div>
 	);
 }
 function Projects() {
 	const projects = [
 		{
-			pName: 'sudoku-solver',
-			sourceLink: 'https://github.com/Mugsend/SUDOKU-SOLVER',
+			pName: 'Sudoku-Solver',
+			sourceLink: 'https://mugsend.github.io/Sudoku-Solver/',
 		},
 		{
-			pName: 'sudoku-solver',
-			sourceLink: 'https://github.com/Mugsend/SUDOKU-SOLVER',
+			pName: 'Clox',
+			sourceLink: 'https://github.com/Mugsend/Clox',
 		},
 		{
-			pName: 'sudoku-solver',
-			sourceLink: 'https://github.com/Mugsend/SUDOKU-SOLVER',
+			pName: 'Portfolio',
+			sourceLink: 'https://github.com/Mugsend/Portfolio',
 		},
 		{
-			pName: 'sudoku-solver',
-			sourceLink: 'https://github.com/Mugsend/SUDOKU-SOLVER',
+			pName: 'Sorting-Algorithm-Visualiser',
+			sourceLink: 'https://github.com/Mugsend/Sorting-Algorithm-Visualiser',
+		},
+		{
+			pName: 'Memeify',
+			sourceLink: 'https://github.com/Mugsend/Memeify',
 		},
 	];
 	return (
 		<Section>
 			<div className={utilStyles.projects}>
 				<h2>Projects</h2>
-				{projects.map((project) => (
-					<Project {...project} />
+				{projects.map((project, index) => (
+					<Project key={index} {...project} />
 				))}
 			</div>
 		</Section>
@@ -64,11 +80,12 @@ function Projects() {
 function Project({ pName, sourceLink }) {
 	return (
 		<div className={utilStyles.project}>
-			<a href={sourceLink}>{pName}</a>
+			<a target="_blank" href={sourceLink}>
+				{pName}
+			</a>
 		</div>
 	);
 }
-function Education() {}
 function Skills() {
 	const skills = [
 		{
@@ -174,7 +191,7 @@ function Skills() {
 				<h2>Skills</h2>
 				<div className={utilStyles.skills_row_container}>
 					<div className={utilStyles.skills_row}>
-						{skills.map(({ name, svg, index }) => (
+						{skills.map(({ name, svg }, index) => (
 							<Skill key={index} name={name} svg={svg} />
 						))}
 					</div>
@@ -226,10 +243,15 @@ function Contact() {
 				<h2>Let's work together!</h2>
 
 				<div className={utilStyles.contact}>
-					<a href="mailto:chaudharysaurabh93063@gmail.com">Email me!</a>
+					<a target="_blank" href="mailto:chaudharysaurabh93063@gmail.com">
+						Email me!
+					</a>
 				</div>
 				<div className={utilStyles.contact}>
-					<a href="mailto:chaudharysaurabh93063@gmail.com">
+					<a
+						target="_blank"
+						href="https://www.linkedin.com/in/saurabh-chaudhary-b6a6a9266"
+					>
 						Let's connect on LinkedIn!
 					</a>
 				</div>
@@ -241,6 +263,10 @@ function Contact() {
 export default function Homepage() {
 	return (
 		<>
+			<Head>
+				<title>Portfolio</title>
+				<link rel="icon" href="/images/favicon.ico" />
+			</Head>
 			<Header />
 			<Skills />
 			<Projects />

@@ -3,13 +3,16 @@
 }
 .profile {
 	display: flex;
+	align-items: center;
+	max-width: 600px;
+	padding: 10px;
+	justify-content: space-between;
 }
 .profile_img {
 	border-radius: 50%;
 }
 .profile_name {
-	margin-left: 25px;
-	margin-top: 25px;
+	margin: 0;
 	font-size: 70px;
 	line-height: 1;
 }
@@ -107,11 +110,9 @@
 @media (max-width: 600px) {
 	.profile {
 		flex-direction: column;
+		align-items: normal;
 	}
 	.profile_name {
-		margin-left: 0;
-		margin-top: 25px;
-		font-size: 40px;
-		line-height: 1;
+		font-size: 50px;
 	}
 }
