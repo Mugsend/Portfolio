@@ -11,12 +11,15 @@
 .profile_img {
 	border-radius: 50%;
 }
-.profile_name {
+.profile_text h1 {
 	margin: 0;
 	font-size: 70px;
 	line-height: 1;
 }
-
+.profile_text a {
+	font-size: 20px;
+	margin-left: 5px;
+}
 .skill {
 	text-align: center;
 	border-radius: 4px;

@@ -4,7 +4,6 @@ import utilStyles from '../styles/utils.module.css';
 import Section from '../components/section';
 import profileImg from '../public/images/profile.jpg';
 import { useState } from 'react';
-import { favicon } from '../public/images/favicon.ico';
 function Header() {
 	return (
 		<Section>
@@ -26,8 +25,8 @@ function Profile() {
 				width={200}
 				alt="Sourabh"
 			/>
-			<div>
-				<h1 className={utilStyles.profile_name}>
+			<div className={utilStyles.profile_text}>
+				<h1>
 					Saurabh <br></br>Chaudhary
 				</h1>
 				<a
@@ -35,7 +34,8 @@ function Profile() {
 					href="https://open.spotify.com/user/31lls5x2i7gpgokdmmoi2xg2prmq?si=f7c263b3b640497b"
 				>
 					Music
-				</a>{' '}
+				</a>
+				<a>Web Dev</a>
 				<a target="_blank" href="https://github.com/Mugsend">
 					Programming
 				</a>

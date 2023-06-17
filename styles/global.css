@@ -13,14 +13,8 @@ body {
 }
 
 a {
-	color: #43ffde;
-	text-decoration: none;
+	color: #7cb6ff;
 }
-
-a:hover {
-	text-decoration: underline;
-}
-
 img {
 	max-width: 100%;
 	display: block;
