@@ -114,7 +114,7 @@
 		flex-direction: column;
 		align-items: normal;
 	}
-	.profile_name {
+	.profile_text h1 {
 		font-size: 50px;
 	}
 }
