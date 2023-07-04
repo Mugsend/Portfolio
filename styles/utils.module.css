@@ -91,24 +91,6 @@
 	border-radius: 4px;
 }
 
-.about {
-	background: linear-gradient(rgba(0, 0, 0, 0.5) 0, transparent);
-}
-.about_card {
-	border-radius: 10px;
-	background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%),
-		url(../public/images/about-img.jpg);
-	background-size: cover;
-	background-position: 50% 50%;
-	height: 512px;
-	position: relative;
-}
-.about_text {
-	position: absolute;
-	bottom: 0;
-	padding: 20px;
-}
-
 @media (max-width: 600px) {
 	.profile {
 		flex-direction: column;
