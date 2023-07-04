@@ -35,7 +35,6 @@ function Profile() {
 				>
 					Music
 				</a>
-				<a>Web Dev</a>
 				<a target="_blank" href="https://github.com/Mugsend">
 					Programming
 				</a>
