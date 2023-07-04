@@ -200,33 +200,6 @@ function Skills() {
 		</Section>
 	);
 }
-function About() {
-	const about =
-		"When I'm not writing code, you can find me indulging in my love of classical, J-rock, and film scores, or catching up on my favorite movies and shows. Loving Vincent and Better Call Saul are particular favorites of mine. In my free time, I also enjoy taking on side projects as a hobby, exploring new areas of interest, and keeping up-to-date with the latest scientific developments.";
-	const [full_about, setFullAbout] = useState(false);
-	function showFullAbout() {
-		setFullAbout(true);
-	}
-	return (
-		<Section>
-			<div className={utilStyles.about}>
-				<h2>About</h2>
-				<div className={utilStyles.about_card}>
-					<div className={utilStyles.about_text}>
-						{full_about ? (
-							<p>{about}</p>
-						) : (
-							<p>
-								{about.slice(0, 100)}
-								<a onClick={showFullAbout}> ...show full</a>
-							</p>
-						)}
-					</div>
-				</div>
-			</div>
-		</Section>
-	);
-}
 
 function Skill({ name, svg }) {
 	return (
@@ -271,7 +244,6 @@ export default function Homepage() {
 			<Skills />
 			<Projects />
 			<Contact />
-			<About />
 		</>
 	);
 }
