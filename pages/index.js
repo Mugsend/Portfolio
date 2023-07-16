@@ -47,7 +47,7 @@ function Projects() {
 
 	useEffect(() => {
 		var myHeaders = new Headers();
-		const gitToken = process.env.GIT_TOKEN;
+		const gitToken = process.env.NEXT_PUBLIC_VERCEL_ENV;
 		console.log(process.env);
 		myHeaders.append('Authorization', `Bearer ${gitToken}`);
 		var requestOptions = {
