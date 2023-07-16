@@ -45,10 +45,10 @@ function Profile() {
 function Projects() {
 	const [projects, setProjects] = useState([]);
 
-	useEffect(async () => {
+	useEffect(() => {
 		var myHeaders = new Headers();
-		const gitToken = await process.env.json();
-		console.log(await process.env.json());
+		const gitToken = process.env.GIT_TOKEN;
+		console.log(process.env);
 		myHeaders.append('Authorization', `Bearer ${gitToken}`);
 		var requestOptions = {
 			method: 'GET',
