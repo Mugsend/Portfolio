@@ -19,69 +19,59 @@
 	font-size: 20px;
 	margin-left: 5px;
 }
-.skill {
-	text-align: center;
-	border-radius: 4px;
-	background: #181818;
-	margin: 10px;
-	width: 100px;
-	height: 150px;
-	display: flex;
-	padding: 4px;
-	flex-direction: column;
-	justify-content: space-evenly;
-}
+
 .skills {
 	background: linear-gradient(rgb(0, 0, 0, 0.6) 0, #121212 50%);
 }
-.skills_row_container {
-	overflow-x: auto;
-}
-.skills_row {
+.skills .container {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	width: max-content;
 }
-.skills_row > :nth-child(1) > svg {
+.skills .container > :nth-child(1) > svg {
 	fill: #d1d1d1;
 }
-.skills_row > :nth-child(2) > svg {
+.skills .container > :nth-child(2) > svg {
 	fill: #86c30d;
 }
-.skills_row > :nth-child(3) > svg {
+.skills .container > :nth-child(3) > svg {
 	fill: #00dffc;
 }
-.skills_row > :nth-child(4) > svg {
+.skills .container > :nth-child(4) > svg {
 	fill: #573a28;
 }
-.skills_row > :nth-child(5) > svg {
+.skills .container > :nth-child(5) > svg {
 	fill: #1b4872;
 }
-.skills_row > :nth-child(6) > svg {
+.skills .container > :nth-child(6) > svg {
 	fill: #8d9aff;
 }
-.skills_row > :nth-child(7) > svg {
+.skills .container > :nth-child(7) > svg {
 	fill: #d1d1d1;
 }
-.skills_row > :nth-child(8) > svg {
+.skills .container > :nth-child(8) > svg {
 	fill: #fed142;
+}
+.skill {
+	display: flex;
+	width: 100px;
+	height: 100px;
+	margin: 5px;
+	justify-content: center;
+	align-items: center;
+	background: #181818;
 }
 .projects {
 	background: linear-gradient(#121212 0%, rgb(0, 0, 0, 0.6) 50%);
 }
 .project {
-	display: flex;
-	align-items: center;
 	background: #181818;
 	border-radius: 4px;
 	padding: 10px;
-	margin: 10px 0;
+	margin-bottom: 10px;
 }
-
 .contacts {
 	background: linear-gradient(rgba(0, 0, 0, 0.5) 0, transparent);
-	
 }
 .contact {
 	margin: 10px 0;
@@ -91,7 +81,6 @@
 	padding: 10px;
 	border-radius: 4px;
 }
-
 @media (max-width: 600px) {
 	.profile {
 		flex-direction: column;
