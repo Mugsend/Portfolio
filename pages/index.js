@@ -6,13 +6,11 @@ import profileImg from '../public/images/profile.jpg';
 import { useEffect, useState } from 'react';
 function Header() {
 	return (
-		<Section>
-			<div className={utilStyles.header}>
-				<h1>Hey!</h1>
-				<h2>Welcome to my Portfolio.</h2>
-				<Profile />
-			</div>
-		</Section>
+		<div className={utilStyles.header}>
+			<h1>Hey!</h1>
+			<h2>Welcome to my Portfolio.</h2>
+			<Profile />
+		</div>
 	);
 }
 function Profile() {
@@ -30,12 +28,17 @@ function Profile() {
 					Saurabh <br></br>Chaudhary
 				</h1>
 				<a
+					className={utilStyles.url}
 					target="_blank"
 					href="https://open.spotify.com/user/31lls5x2i7gpgokdmmoi2xg2prmq?si=f7c263b3b640497b"
 				>
 					Music
 				</a>
-				<a target="_blank" href="https://github.com/Mugsend">
+				<a
+					className={utilStyles.url}
+					target="_blank"
+					href="https://github.com/Mugsend"
+				>
 					Programming
 				</a>
 			</div>
@@ -73,7 +76,7 @@ function Projects() {
 	return (
 		<Section>
 			<div className={utilStyles.projects}>
-				<h2>Projects</h2>
+				<div className={utilStyles.section_heading}>Projects (ぱ疫や)</div>
 				<div className={utilStyles.container}>
 					{projects.map((project, index) => (
 						<Project key={index} {...project} />
@@ -86,15 +89,11 @@ function Projects() {
 function Project({ name, description, url }) {
 	return (
 		<div className={utilStyles.project}>
-			<div>
-				<h3 className={utilStyles.name}>{name}</h3>
-				<p className={utilStyles.description}>{description}</p>
-			</div>
-			<div className={utilStyles.url}>
-				<a target="_blank" href={url}>
-					Source
-				</a>
-			</div>
+			<div className={utilStyles.heading}>{name}</div>
+			<p className={utilStyles.description}>{description}</p>
+			<a className={utilStyles.url} target="_blank" href={url}>
+				Source
+			</a>
 		</div>
 	);
 }
@@ -130,7 +129,7 @@ function Skills() {
 	return (
 		<Section>
 			<div className={utilStyles.skills}>
-				<h2>Skills</h2>
+				<div className={utilStyles.section_heading}>Skills (ぷ緯雨)</div>
 				<div className={utilStyles.container}>
 					{skills.map((skill, index) => (
 						<Skill key={index} svg={skill} />
@@ -148,20 +147,30 @@ function Contact() {
 	return (
 		<Section>
 			<div className={utilStyles.contacts}>
-				<h2>Let's work together!</h2>
-
-				<div className={utilStyles.contact}>
-					<a target="_blank" href="mailto:chaudharysaurabh93063@gmail.com">
-						Email me!
-					</a>
+				<div className={utilStyles.section_heading}>
+					Let's work together! (ソ畝挨)
 				</div>
-				<div className={utilStyles.contact}>
-					<a
-						target="_blank"
-						href="https://www.linkedin.com/in/saurabh-chaudhary-b6a6a9266"
-					>
-						Let's connect on LinkedIn!
-					</a>
+				<div className={utilStyles.container}>
+					<div className={utilStyles.contact}>
+						<div className={utilStyles.heading}>Email Me!</div>
+						<a
+							className={utilStyles.url}
+							target="_blank"
+							href="mailto:chaudharysaurabh93063@gmail.com"
+						>
+							ok!
+						</a>
+					</div>
+					<div className={utilStyles.contact}>
+						<div className={utilStyles.heading}>Let's connect on LinkedIn!</div>
+						<a
+							className={utilStyles.url}
+							target="_blank"
+							href="https://www.linkedin.com/in/saurabh-chaudhary-b6a6a9266"
+						>
+							ok!
+						</a>
+					</div>
 				</div>
 			</div>
 		</Section>
