@@ -69,7 +69,7 @@ function Projects() {
 				);
 			})
 			.catch((error) => console.log('error', error));
-	});
+	}, []);
 	return (
 		<Section>
 			<div className={utilStyles.projects}>
