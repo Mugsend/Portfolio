@@ -4,6 +4,7 @@ import utilStyles from '../styles/utils.module.css';
 import Section from '../components/section';
 import profileImg from '../public/images/profile.jpg';
 import { useEffect, useState } from 'react';
+import configs from '../configs.json';
 function Header() {
 	return (
 		<div className={utilStyles.header}>
@@ -50,8 +51,10 @@ function Projects() {
 
 	useEffect(() => {
 		var myHeaders = new Headers();
-		const gitToken = process.env.NEXT_PUBLIC_GIT_TOKEN;
-		myHeaders.append('Authorization', `Bearer ${gitToken}`);
+		myHeaders.append(
+			'Authorization',
+			`Bearer ${process.env.NEXT_PUBLIC_GIT_TOKEN || configs.git_token}`,
+		);
 		var requestOptions = {
 			method: 'GET',
 			headers: myHeaders,
@@ -74,24 +77,22 @@ function Projects() {
 			.catch((error) => console.log('error', error));
 	}, []);
 	return (
-		<Section>
-			<div className={utilStyles.projects}>
-				<div className={utilStyles.section_heading}>Projects (ぱ疫や)</div>
-				<div className={utilStyles.container}>
-					{projects.map((project, index) => (
-						<Project key={index} {...project} />
-					))}
-				</div>
+		<div className={utilStyles.window}>
+			<div className={utilStyles.title}>Projects (ぱ疫や)</div>
+			<div className={utilStyles.container}>
+				{projects.map((project, index) => (
+					<Project key={index} {...project} />
+				))}
 			</div>
-		</Section>
+		</div>
 	);
 }
 function Project({ name, description, url }) {
 	return (
-		<div className={utilStyles.project}>
-			<div className={utilStyles.heading}>{name}</div>
+		<div className={utilStyles.content}>
+			<div className={utilStyles.title}>{name}</div>
 			<p className={utilStyles.description}>{description}</p>
-			<a className={utilStyles.url} target="_blank" href={url}>
+			<a className={utilStyles.link_btn} target="_blank" href={url}>
 				Source
 			</a>
 		</div>
@@ -127,53 +128,47 @@ function Skills() {
 		</svg>,
 	];
 	return (
-		<Section>
-			<div className={utilStyles.skills}>
-				<div className={utilStyles.section_heading}>Skills (ぷ緯雨)</div>
-				<div className={utilStyles.container}>
-					{skills.map((skill, index) => (
-						<Skill key={index} svg={skill} />
-					))}
-				</div>
+		<div className={utilStyles.window}>
+			<div className={utilStyles.title}>Skills (ぷ緯雨)</div>
+			<div className={utilStyles.container}>
+				{skills.map((skill, index) => (
+					<Skill key={index} svg={skill} />
+				))}
 			</div>
-		</Section>
+		</div>
 	);
 }
 
 function Skill({ svg }) {
-	return <div className={utilStyles.skill}>{svg}</div>;
+	return <div className={utilStyles.content}>{svg}</div>;
 }
 function Contact() {
 	return (
-		<Section>
-			<div className={utilStyles.contacts}>
-				<div className={utilStyles.section_heading}>
-					Let's work together! (ソ畝挨)
+		<div className={utilStyles.window}>
+			<div className={utilStyles.title}>Let's work together! (ソ畝挨)</div>
+			<div className={utilStyles.container}>
+				<div className={utilStyles.content}>
+					<div className={utilStyles.title}>Email Me!</div>
+					<a
+						className={utilStyles.link_btn}
+						target="_blank"
+						href="mailto:chaudharysaurabh93063@gmail.com"
+					>
+						ok!
+					</a>
 				</div>
-				<div className={utilStyles.container}>
-					<div className={utilStyles.contact}>
-						<div className={utilStyles.heading}>Email Me!</div>
-						<a
-							className={utilStyles.url}
-							target="_blank"
-							href="mailto:chaudharysaurabh93063@gmail.com"
-						>
-							ok!
-						</a>
-					</div>
-					<div className={utilStyles.contact}>
-						<div className={utilStyles.heading}>Let's connect on LinkedIn!</div>
-						<a
-							className={utilStyles.url}
-							target="_blank"
-							href="https://www.linkedin.com/in/saurabh-chaudhary-b6a6a9266"
-						>
-							ok!
-						</a>
-					</div>
+				<div className={utilStyles.content}>
+					<div className={utilStyles.title}>Let's connect on LinkedIn!</div>
+					<a
+						className={utilStyles.link_btn}
+						target="_blank"
+						href="https://www.linkedin.com/in/saurabh-chaudhary-b6a6a9266"
+					>
+						ok!
+					</a>
 				</div>
 			</div>
-		</Section>
+		</div>
 	);
 }
 
