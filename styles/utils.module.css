@@ -39,7 +39,7 @@
 	padding: 5px 10px;
 	background-color: rgb(201, 201, 201);
 }
-.url:hover {
+.url a {
 	box-shadow: none;
 }
 @media (max-width: 600px) {
@@ -114,13 +114,11 @@
 	margin-bottom: 0;
 }
 .link_btn {
-	background: #cfcfcf;
-	padding: 3px 5px;
-	box-shadow: 1px 1px;
-	border: 2px outset;
 	color: black;
+	box-shadow: 2px 2px black;
+	padding: 5px 10px;
+	background-color: rgb(201, 201, 201);
 }
 .link_btn:hover {
-	border-style: inset;
 	box-shadow: none;
 }
