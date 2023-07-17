@@ -3,7 +3,6 @@ import Image from 'next/image';
 import utilStyles from '../styles/utils.module.css';
 import profileImg from '../public/images/profile.jpg';
 import { useEffect, useState } from 'react';
-import configs from '../configs.json';
 function Header() {
 	return (
 		<div className={utilStyles.header}>
@@ -52,7 +51,7 @@ function Projects() {
 		var myHeaders = new Headers();
 		myHeaders.append(
 			'Authorization',
-			`Bearer ${process.env.NEXT_PUBLIC_GIT_TOKEN || configs.git_token}`,
+			`Bearer ${process.env.NEXT_PUBLIC_GIT_TOKEN}`,
 		);
 		var requestOptions = {
 			method: 'GET',
