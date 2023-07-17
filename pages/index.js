@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import utilStyles from '../styles/utils.module.css';
-import Section from '../components/section';
 import profileImg from '../public/images/profile.jpg';
 import { useEffect, useState } from 'react';
 import configs from '../configs.json';
