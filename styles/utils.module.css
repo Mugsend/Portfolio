@@ -29,11 +29,16 @@
 	text-shadow: 1px 1px 0 #ccc, 2px 2px 0 #ccc, 3px 3px 0 #444, 4px 4px 0 #444,
 		5px 5px 0 #444, 6px 6px 0 #444, 5px 5px 15px #999;
 }
-.profile_text a {
-	font-size: 20px;
-	margin-left: 5px;
+.profile_text .profile_links {
+	display: flex;
 }
-
+.profile_text .profile_links a {
+	margin-right: 5px;
+	text-align: center;
+	font-size: 20px;
+	padding-top: 8px;
+	width: 25%;
+}
 .url {
 	box-shadow: 2px 2px black;
 	padding: 5px 10px;
