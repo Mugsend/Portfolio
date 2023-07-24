@@ -178,7 +178,7 @@ function Skills() {
 }
 
 function Skill({ svg }) {
-	return <div className={utilStyles.content}></div>;
+	return <div className={utilStyles.content}>{svg}</div>;
 }
 function Contact() {
 	return (
