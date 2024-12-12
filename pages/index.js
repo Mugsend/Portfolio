@@ -20,7 +20,7 @@ function Profile() {
 				src={profileImg}
 				height={200}
 				width={200}
-				alt="Sourabh"
+				alt="Saurabh"
 			/>
 			<div className={utilStyles.profile_text}>
 				<h1>
@@ -30,7 +30,7 @@ function Profile() {
 					<a
 						className={utilStyles.url}
 						target="_blank"
-						href="Resume.pdf"
+						href="resume.pdf"
 					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
