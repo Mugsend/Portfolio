@@ -30,7 +30,7 @@ function Profile() {
 					<a
 						className={utilStyles.url}
 						target="_blank"
-						href="resume.pdf"
+						href="Resume.pdf"
 					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
