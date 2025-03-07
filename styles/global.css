@@ -1,22 +1,51 @@
-body {
-	padding: 0 1rem 1rem;
-	margin: 0;
-	font-family: myriad pro, Verdana, Arial, Helvetica, sans-serif;
-	background: linear-gradient(135deg, #ff50f6, #48fff4);
-	text-transform: uppercase;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	background-attachment: fixed;
-}
-* {
-	padding: 0;
-	margin: 0;
-	border: none;
-	box-sizing: border-box;
-}
-
-img {
-	max-width: 100%;
-	display: block;
-}
+:root {
+    --primary-color: #1a73e8; /* Google Blue */
+    --secondary-color: #34a853; /* Google Green */
+    --background-light: #ffffff;
+    --background-dark: #121212;
+    --text-light: #333333;
+    --text-dark: #e0e0e0;
+    --card-background-light: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    --card-background-dark: rgba(18, 18, 18, 0.8); /* Semi-transparent black */
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --blur: blur(10px); /* Blur effect for glass morphism */
+    --transition: all 0.3s ease;
+  }
+  
+  [data-theme="dark"] {
+    --background-light: #121212;
+    --background-dark: #ffffff;
+    --text-light: #e0e0e0;
+    --text-dark: #333333;
+    --card-background-light: rgba(18, 18, 18, 0.8); /* Semi-transparent black */
+    --card-background-dark: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+  }
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(
+      135deg,
+      rgba(245, 245, 245, 0.9), /* Light background */
+      rgba(230, 230, 230, 0.9) /* Light background */
+    ), url('/images/background.jpg'); /* Optional: Add a background image */
+    background-size: cover;
+    background-attachment: fixed;
+    color: var(--text-light);
+    transition: var(--transition);
+  }
+  
+  [data-theme="dark"] body {
+    background: linear-gradient(
+      135deg,
+      rgba(18, 18, 18, 0.9), /* Dark background */
+      rgba(30, 30, 30, 0.9) /* Dark background */
+    ), url('/images/background-dark.jpg'); /* Optional: Add a dark background image */
+  }
+  
+  * {
+    padding: 0;
+    margin: 0;
+    border: none;
+    box-sizing: border-box;
+  }
+  
