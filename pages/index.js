@@ -35,9 +35,14 @@ function Navbar() {
 		<>
 			<nav className={utilStyles.navbar}>
 				<div className={utilStyles.logo}>MUGSEND</div>
-				<button className={utilStyles.menuToggle} onClick={toggleMenu}>
-					{menuOpen ? '✕' : '☰'}
-				</button>
+				<div className={utilStyles.navRight}>
+          <button className={utilStyles.themeToggle} onClick={toggleTheme}>
+            {theme === 'light' ? '🌙' : '☀️'}
+          </button>
+          <button className={utilStyles.menuToggle} onClick={toggleMenu}>
+            {menuOpen ? '✕' : '☰'}
+          </button>
+        </div>
 				<ul className={`${utilStyles.navLinks} ${menuOpen ? utilStyles.open : ''}`}>
 					<li><a href="#skills" onClick={closeMenu}>Skills</a></li>
 					<li><a href="#clients" onClick={closeMenu}>Clients</a></li>
@@ -45,9 +50,7 @@ function Navbar() {
 					<li><a href="#contact" onClick={closeMenu}>Contact</a></li>
 					<li><a href="#about" onClick={closeMenu}>About</a></li>
 				</ul>
-				<button className={utilStyles.themeToggle} onClick={toggleTheme}>
-					{theme === 'light' ? '🌙' : '☀️'}
-				</button>
+				
 			</nav>
 			<div className={`${utilStyles.menuOverlay} ${menuOpen ? utilStyles.open : ''}`} onClick={closeMenu} />
 		</>
