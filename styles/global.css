@@ -20,6 +20,7 @@
     --card-background-light: rgba(18, 18, 18, 0.8); /* Semi-transparent black */
     --card-background-dark: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
   }
+  
   body {
     margin: 0;
     font-family: 'Inter', sans-serif;
@@ -27,7 +28,7 @@
       135deg,
       rgba(245, 245, 245, 0.9), /* Light background */
       rgba(230, 230, 230, 0.9) /* Light background */
-    ), url('/images/background.jpg'); /* Optional: Add a background image */
+    ), ; /* Optional: Add a background image */
     background-size: cover;
     background-attachment: fixed;
     color: var(--text-light);

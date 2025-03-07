@@ -6,75 +6,89 @@ import { useEffect, useState } from 'react';
 
 function Navbar() {
 	const [menuOpen, setMenuOpen] = useState(false);
-  
-	const toggleMenu = () => {
-	  setMenuOpen(!menuOpen);
-	};
-	const [theme, setTheme] = useState("dark");
-
+	const [theme, setTheme] = useState("light");
 	const toggleTheme = () => {
-	  setTheme(theme === "light" ? "dark" : "light");
-	  document.documentElement.setAttribute("data-theme", theme);
+		const newTheme = theme === 'light' ? 'dark' : 'light';
+		setTheme(newTheme);
+		document.documentElement.setAttribute('data-theme', newTheme);
 	};
+
+	const toggleMenu = () => {
+		setMenuOpen(!menuOpen);
+	};
+
+	const closeMenu = (e) => {
+		e.preventDefault();
+		const targetId = e.currentTarget.getAttribute('href');
+		const targetElement = document.querySelector(targetId);
+
+		if (targetElement) {
+			targetElement.scrollIntoView({ behavior: 'smooth' });
+		}
+		// Close the menu after a short delay
+		setTimeout(() => {
+			setMenuOpen(false);
+		}, 300); // Adjust the delay as needed
+	};
+
 	return (
-	  <>
-		<nav className={utilStyles.navbar}>
-		  <div className={utilStyles.logo}>Mugsend</div>
-		  <button className={utilStyles.menuToggle} onClick={toggleMenu}>
-			{menuOpen ? '✕' : '☰'}
-		  </button>
-		  <ul className={`${utilStyles.navLinks} ${menuOpen ? utilStyles.open : ''}`}>
-			<li><a href="#about">About</a></li>
-			<li><a href="#skills">Skills</a></li>
-			<li><a href="#projects">Projects</a></li>
-			<li><a href="#clients">Clients</a></li>
-			<li><a href="#contact">Contact</a></li>
-		  </ul>
-		  <button className={utilStyles.themeToggle} onClick={toggleTheme}>
-        {theme === 'light' ? '🌙' : '☀️'}
-      </button>
-		</nav>
-		<div className={`${utilStyles.menuOverlay} ${menuOpen ? utilStyles.open : ''}`} onClick={toggleMenu} />
-	  </>
+		<>
+			<nav className={utilStyles.navbar}>
+				<div className={utilStyles.logo}>MUGSEND</div>
+				<button className={utilStyles.menuToggle} onClick={toggleMenu}>
+					{menuOpen ? '✕' : '☰'}
+				</button>
+				<ul className={`${utilStyles.navLinks} ${menuOpen ? utilStyles.open : ''}`}>
+					<li><a href="#skills" onClick={closeMenu}>Skills</a></li>
+					<li><a href="#clients" onClick={closeMenu}>Clients</a></li>
+					<li><a href="#projects" onClick={closeMenu}>Projects</a></li>
+					<li><a href="#contact" onClick={closeMenu}>Contact</a></li>
+					<li><a href="#about" onClick={closeMenu}>About</a></li>
+				</ul>
+				<button className={utilStyles.themeToggle} onClick={toggleTheme}>
+					{theme === 'light' ? '🌙' : '☀️'}
+				</button>
+			</nav>
+			<div className={`${utilStyles.menuOverlay} ${menuOpen ? utilStyles.open : ''}`} onClick={closeMenu} />
+		</>
 	);
-  }
+}
 
 function Header() {
-  return (
-    <div className={utilStyles.header}>
-      <h1>Hey!</h1>
-      <h2>Welcome to my Portfolio.</h2>
-      <Profile />
-    </div>
-  );
+	return (
+		<div className={utilStyles.header}>
+			<h1>Hey!</h1>
+			<h2>Welcome to my Portfolio.</h2>
+			<Profile />
+		</div>
+	);
 }
 
 function Profile() {
-  return (
-    <div className={utilStyles.profile} id="profile">
-      <Image
-        className={utilStyles.profile_img}
-        src={profileImg}
-        height={200}
-        width={200}
-        alt="Saurabh"
-      />
-      <div className={utilStyles.profile_text}>
-        <h1>
-          Saurabh <br /> Chaudhary
-        </h1>
-        <div className={utilStyles.profile_links}>
-          <a className={utilStyles.url} target="_blank" href="Resume.pdf">Resume</a>
-          <a className={utilStyles.url} target="_blank" href="https://github.com/Mugsend">Github</a>
-          <a className={utilStyles.url} target="_blank" href="https://www.linkedin.com/in/saurabh-chaudhary-b6a6a9266">LinkedIn</a>
-          <a className={utilStyles.url} target="_blank" href="mailto:chaudharysaurabh93063@gmail.com">Email</a>
-        </div>
-      </div>
-    </div>
-  );
+	return (
+		<div className={utilStyles.profile} id="profile">
+			<Image
+				className={utilStyles.profile_img}
+				src={profileImg}
+				height={200}
+				width={200}
+				alt="Saurabh"
+			/>
+			<div className={utilStyles.profile_text}>
+				<h1>
+					Saurabh <br /> Chaudhary
+				</h1>
+				<div className={utilStyles.profile_links}>
+					<a className={utilStyles.url} target="_blank" href="Resume.pdf">Resume</a>
+					<a className={utilStyles.url} target="_blank" href="https://github.com/Mugsend">Github</a>
+					<a className={utilStyles.url} target="_blank" href="https://www.linkedin.com/in/saurabh-chaudhary-b6a6a9266">LinkedIn</a>
+					<a className={utilStyles.url} target="_blank" href="mailto:chaudharysaurabh93063@gmail.com">Email</a>
+				</div>
+			</div>
+		</div>
+	);
 }
 
-// Other components (Skills, Projects, Clients, Rates, Contact, About) remain the same...
 function Projects() {
 	const [projects, setProjects] = useState([]);
 
@@ -107,7 +121,10 @@ function Projects() {
 	}, []);
 	return (
 		<div className={utilStyles.window} id='projects'>
-			<div className={utilStyles.title}>Projects</div>
+			<div className={utilStyles.title}>Personal projects</div>
+			<p className={utilStyles.sectionTagline}>
+				From audio plugins to web applications, I’ve built projects that push boundaries and deliver exceptional user experiences.
+			</p>
 			<div className={utilStyles.container}>
 				{projects.map((project, index) => (
 					<Project key={index} {...project} />
@@ -131,91 +148,77 @@ function Project({ name, description, url }) {
 
 function Skills() {
 	const skills = {
-	  "Programming Languages": {
-		skills: ["JavaScript", "TypeScript", "Python", "C#"],
-		icon: "code",
-	  },
-	  "Frameworks & Libraries": {
-		skills: ["Next.js", "React", "Electron", "WinUI 3"],
-		icon: "library_books",
-	  },
-	  "Databases": {
-		skills: ["MongoDB", "PostgreSQL"],
-		icon: "storage",
-	  },
-	  "Tools & Platforms": {
-		skills: ["Git", "Tailwind CSS", "Node.js"],
-		icon: "build",
-	  },
+		"Programming Languages": {
+			skills: ["JavaScript", "TypeScript", "Python", "C++", "AutoLISP"],
+			icon: "code",
+		},
+		"Frameworks & Libraries": {
+			skills: ["React", "Next.js", "Node.js", "JUCE", "Discord.js", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Plotly"],
+			icon: "library_books",
+		},
+		"Databases": {
+			skills: ["MongoDB", "PostgreSQL", "GraphQL"],
+			icon: "storage",
+		},
+		"Tools & Platforms": {
+			skills: ["Git", "Tailwind CSS", "WordPress", "WooCommerce", "Elementor", "Strapi CMS", "Max/MSP", "VST3"],
+			icon: "build",
+		},
+		"Cloud & DevOps": {
+			skills: ["AWS (EC2, S3, Lambda)", "Google Cloud Platform (GCP)", "Docker", "Kubernetes", "CI/CD Pipelines"],
+			icon: "cloud",
+		},
 	};
-  
-	return (
-	  <div className={utilStyles.window} id="skills">
-		<div className={utilStyles.title}>Skills & Technologies</div>
-		<div className={utilStyles.container}>
-		  {Object.entries(skills).map(([category, { skills: skillList, icon }]) => (
-			<div key={category} className={utilStyles.skillCategory}>
-			  <h3 className={utilStyles.categoryTitle}>
-				<span className="material-icons">{icon}</span> {category}
-			  </h3>
-			  <div className={utilStyles.skillList}>
-				{skillList.map((skill, index) => (
-				  <div key={index} className={utilStyles.skillItem}>
-					{skill}
-				  </div>
-				))}
-			  </div>
-			</div>
-		  ))}
-		</div>
-	  </div>
-	);
-  }
 
-function Rates() {
 	return (
-		<div className={utilStyles.window} id='rates'>
-			<div className={utilStyles.title}>Rates & Budget</div>
+		<div className={utilStyles.window} id="skills">
+			<div className={utilStyles.title}>Skills & Technologies</div>
+			<p className={utilStyles.sectionTagline}>
+				With a diverse skill set spanning programming languages, frameworks, and cloud technologies, I deliver robust and scalable solutions.
+			</p>
 			<div className={utilStyles.container}>
-				<div className={utilStyles.content}>
-					<h2 className={utilStyles.rate}>💰 My Hourly Rate</h2>
-					<p className={utilStyles.price}>$XX per hour</p>
-				</div>
-				<div className={utilStyles.content}>
-					<h2 className={utilStyles.rate}>📉 Flexible Pricing</h2>
-					<p className={utilStyles.description}>
-						I offer budget-friendly solutions without compromising quality.
-					</p>
-				</div>
+				{Object.entries(skills).map(([category, { skills: skillList, icon }]) => (
+					<div key={category} className={utilStyles.skillCategory}>
+						<h3 className={utilStyles.categoryTitle}>
+							<span className="material-icons">{icon}</span> {category}
+						</h3>
+						<div className={utilStyles.skillList}>
+							{skillList.map((skill, index) => (
+								<div key={index} className={utilStyles.skillItem}>
+									{skill}
+								</div>
+							))}
+						</div>
+					</div>
+				))}
 			</div>
 		</div>
 	);
 }
 
+
 function Contact() {
 	return (
-		<div className={utilStyles.window} id='contact'>
-			<div className={utilStyles.title}>Let's work together!</div>
+		<div className={utilStyles.window} id="contact">
+			<div className={utilStyles.title}>Let's Work Together!</div>
+			<p className={utilStyles.sectionTagline}>
+				Ready to bring your ideas to life? Let’s collaborate and create something amazing!
+			</p>
 			<div className={utilStyles.container}>
-				<div className={utilStyles.content}>
-					<div className={utilStyles.title}>Email Me!</div>
-					<a
-						className={utilStyles.link_btn}
-						target="_blank"
-						href="mailto:chaudharysaurabh93063@gmail.com"
-					>
-						ok!
-					</a>
+				<div className={utilStyles.contactCard} onClick={() => window.location.href = "mailto:chaudharysaurabh93063@gmail.com"}>
+					<span className="material-icons">email</span>
+					<h3>Email Me</h3>
+					<p>Get in touch directly via email.</p>
 				</div>
-				<div className={utilStyles.content}>
-					<div className={utilStyles.title}>Let's connect on LinkedIn!</div>
-					<a
-						className={utilStyles.link_btn}
-						target="_blank"
-						href="https://www.linkedin.com/in/saurabh-chaudhary-b6a6a9266"
-					>
-						ok!
-					</a>
+				<div className={utilStyles.contactCard} onClick={() => window.open("https://www.linkedin.com/in/saurabh-chaudhary-b6a6a9266", "_blank")}>
+					<span className="material-icons">people</span>
+					<h3>Connect on LinkedIn</h3>
+					<p>Let’s connect and grow our professional network.</p>
+				</div>
+				<div className={utilStyles.contactCard} onClick={() => window.open("https://github.com/Mugsend", "_blank")}>
+					<span className="material-icons">code</span>
+					<h3>Check Out My GitHub</h3>
+					<p>Explore my projects and contributions.</p>
 				</div>
 			</div>
 		</div>
@@ -225,15 +228,16 @@ function About() {
 	return (
 		<div className={utilStyles.window} id="about">
 			<div className={utilStyles.title}>About Me</div>
+
 			<div className={utilStyles.container}>
 				<div className={utilStyles.content}>
 					<p>
-						👋 Hi, I'm Mugsend, a passionate developer specializing in <b>WinUI 3, Next.js, 
-						and cross-platform applications</b>. I love building innovative solutions 
+						👋 Hi, I'm Mugsend, a passionate developer specializing in <b>WinUI 3, Next.js,
+							and cross-platform applications</b>. I love building innovative solutions
 						for desktop, mobile, and web platforms.
 					</p>
 					<p>
-						With experience in <b>C#, JavaScript, Python, and UI/UX design</b>, I create 
+						With experience in <b>C#, JavaScript, Python, and UI/UX design</b>, I create
 						modern applications that are both functional and aesthetically pleasing.
 					</p>
 					<p>
@@ -261,25 +265,73 @@ function About() {
 function Clients() {
 	const clients = [
 		{
-			name: "ABC Corp",
-			project: "Developed a Windows Desktop App",
-			description: "Built a high-performance WinUI application for managing enterprise resources.",
+			name: "SocaLabs",
+			project: "Stereo Processor Plugin",
+			description:
+				"Collaborated with a team to develop a Stereo Processor plugin using <b>C++</b>, <b>JUCE framework</b>, and <b>VST3 technology</b>, delivering a high-quality audio processing tool for professional music production.",
 		},
 		{
-			name: "XYZ Ltd.",
-			project: "Cross-Platform Mobile App",
-			description: "Created an iOS and Android app for real-time communication using Flutter.",
+			name: "Khief",
+			project: "Discord Bot for Astral Projection Community",
+			description:
+				"Developed a Discord bot using <b>Node.js</b>, <b>Discord.js</b>, and <b>MongoDB</b>, enabling users to create and join lobbies through custom commands, enhancing community engagement and interaction.",
 		},
 		{
-			name: "DEF Startup",
-			project: "E-Commerce Website",
-			description: "Designed and developed a Next.js-based online store with payment integration.",
+			name: "Raga-Trance",
+			project: "Glitchy Arpeggiator Plugin",
+			description:
+				"Created a custom audio processing plugin using <b>Max/MSP</b> and <b>JUCE</b> within a week for an upcoming gig. The plugin was used to produce tracks that received an overwhelming response from the audience.",
+		},
+		{
+			name: "Bosley",
+			project: "Wiki Website for Nibi Programming Language",
+			description:
+				"Developed a wiki-style website using <b>Next.js</b>, <b>Markdown</b>, and <b>Tailwind CSS</b> for a custom programming language, providing comprehensive documentation and resources for developers.",
+		},
+		{
+			name: "Nucork",
+			project: "Custom AutoCAD Scripts",
+			description:
+				"Collaborated with a team to develop custom AutoCAD scripts using <b>AutoLISP</b> and <b>Python</b>, automating repetitive tasks such as generating drawings with varying dimensions, significantly improving workflow efficiency.",
+		},
+		{
+			name: "Ice-Blue Pulga",
+			project: "SEO-Optimized Hotel Website",
+			description:
+				"Designed and developed an SEO-optimized website using <b>React</b>, <b>GraphQL</b>, and <b>Strapi CMS</b>, resulting in a <b>70% increase in sales</b> during the peak season by improving online visibility and organic traffic.",
+		},
+		{
+			name: "Mavrix Music Academy",
+			project: "Website for Private Music Lessons",
+			description:
+				"Built a website using <b>WordPress</b>, <b>WooCommerce</b>, and <b>Elementor</b> for selling private music lessons, providing a seamless platform for students to enroll and access course materials.",
+		},
+		{
+			name: "Liman",
+			project: "Python Problem-Solving Mentorship",
+			description:
+				"Mentored an individual in problem-solving with <b>Python</b>, <b>NumPy</b>, and <b>Pandas</b>, guiding them to secure a developer job in England through personalized coaching.",
+		},
+		{
+			name: "Olayenka",
+			project: "Data Processing and Visualization Tutoring",
+			description:
+				"Provided online tutoring on data processing and visualization using <b>Python</b>, <b>Matplotlib</b>, <b>Seaborn</b>, and <b>Plotly</b>, enabling the client to analyze and present data effectively.",
+		},
+		{
+			name: "Oxygen Academy",
+			project: "Basic Programming Tutoring",
+			description:
+				"Taught basic programming and problem-solving using <b>Python</b>, <b>Scratch</b>, and <b>Blockly</b> to high school students, fostering their interest in coding and equipping them with foundational skills.",
 		},
 	];
 
 	return (
-		<div className={utilStyles.window} id='clients'>
+		<div className={utilStyles.window} id="clients">
 			<div className={utilStyles.title}>Clients & Work</div>
+			<p className={utilStyles.sectionTagline}>
+				I’ve collaborated with clients across industries to create tailored solutions that drive growth and innovation.
+			</p>
 			<div className={utilStyles.container}>
 				{clients.map((client, index) => (
 					<Client key={index} {...client} />
@@ -289,31 +341,35 @@ function Clients() {
 	);
 }
 
-function Client({ name, project, description}) {
+function Client({ name, project, description }) {
 	return (
 		<div className={utilStyles.content}>
 			<div className={utilStyles.title}>{name}</div>
-			<p className={utilStyles.project}>{project}</p>
-			<p className={utilStyles.description}>{description}</p>
+			<div className={utilStyles.description}>{project}
+				<p
+					className={utilStyles.details}
+					dangerouslySetInnerHTML={{ __html: description }}
+				/>
+			</div>
 		</div>
 	);
 }
 
+
 export default function Homepage() {
-  return (
-    <>
-	<Head>
-		<title>Portfolio</title>
-	</Head>
-	 
-      <Navbar />
-      <Header />
-      <Skills />
-      <Projects />
-      <Clients />
-      <Rates />
-      <Contact />
-      <About />
-    </>
-  );
+	return (
+		<>
+			<Head>
+				<title>Portfolio</title>
+			</Head>
+
+			<Navbar />
+			<Header />
+			<Skills />
+			<Clients />
+			<Projects />
+			<Contact />
+			<About />
+		</>
+	);
 }

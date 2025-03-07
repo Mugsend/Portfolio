@@ -1,4 +1,33 @@
+[data-theme="light"] .menuOverlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.9)
+  );
+}
 
+/* Gradient overlay for dark theme */
+[data-theme="dark"] .menuOverlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.9)
+  );
+}
+[data-theme="light"] .container::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    var(--background-light)
+  );
+}
+[data-theme="dark"] .container::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(18, 18, 18, 0),
+    var(--background-light)
+  );
+}
   /* Navbar */
   .navbar {
     display: flex;
@@ -12,7 +41,6 @@
     z-index: 1000;
   }
   .navbar, .window, .skillItem, .content {
-    background: var(--card-background-light);
     backdrop-filter: var(--blur);
     -webkit-backdrop-filter: var(--blur);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -20,6 +48,7 @@
   
   /* Header with transparency */
   .header {
+    
     background: linear-gradient(
       135deg,
       rgba(26, 115, 232, 0.8), /* Semi-transparent primary color */
@@ -29,7 +58,17 @@
     -webkit-backdrop-filter: var(--blur);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
+  .details {
+    font-size: 1rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
   
+.details b {
+    color: var(--primary-color);
+    font-weight: 600;
+  }
   /* Hover effects with transparency */
   .skillItem:hover, .content:hover { /* Slightly less transparent on hover */
     transform: translateY(-5px);
@@ -80,7 +119,6 @@
   .header {
     text-align: center;
     padding: 4rem 2rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
   }
   
@@ -217,9 +255,155 @@
   .themeToggle:hover {
     background-color: var(--secondary-color);
   }
+  .sectionTagline {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    text-align: center;
+    margin: 1.5rem 0;
+    font-weight: 500;
+    line-height: 1.6;
+  }
   
+  @media (max-width: 768px) {
+    .sectionTagline {
+      font-size: 1rem;
+      margin: 1rem 0;
+    }
+  }
+  .contactCard {
+    background-color: var(--card-background-light);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .contactCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: var(--primary-color);
+  }
+  
+  .contactCard:hover h3,
+  .contactCard:hover p {
+    color: white;
+  }
+  
+  .contactCard h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--text-light);
+    margin: 0;
+  }
+  
+  .contactCard p {
+    font-size: 1rem;
+    color: var(--text-light);
+    margin: 0;
+  }
+  
+  .contactCard .material-icons {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    transition: var(--transition);
+  }
+  
+  .contactCard:hover .material-icons {
+    color: white;
+  }
+  
+  /* Mobile-specific styles */
+  @media (max-width: 768px) {
+    .contactCard {
+      padding: 1.5rem;
+    }
+  
+    .contactCard h3 {
+      font-size: 1.1rem;
+    }
+  
+    .contactCard p {
+      font-size: 0.9rem;
+    }
+  
+    .contactCard .material-icons {
+      font-size: 2rem;
+    }
+  }
+  .description {
+    font-size: 1.25rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+  }
   /* Responsive Design */
   @media (max-width: 768px) {
+    .description {
+      font-size: 1.1rem;
+    }
+  
+    .details {
+      font-size: 0.9rem;
+    }
+    .container::after{
+      content: '';
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  pointer-events: none; /* Ensure the overlay doesn't block clicks */
+    }
+    .container {
+      position: relative;
+      max-height: 500px; /* Adjust the height as needed */
+      overflow-y: auto; /* Enable vertical scrolling */
+      padding-right: 1rem; /* Add some padding to prevent content from touching the scrollbar */
+    }
+  .menuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Default overlay color */
+  backdrop-filter: blur(5px); /* Blur effect */
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.menuOverlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+    /* Custom scrollbar styling */
+    .container::-webkit-scrollbar {
+      width: 8px; /* Width of the scrollbar */
+    }
+  
+    .container::-webkit-scrollbar-track {
+      background: var(--card-background-light); /* Track color */
+      border-radius: 4px;
+    }
+  
+    .container::-webkit-scrollbar-thumb {
+      background: var(--primary-color); /* Thumb color */
+      border-radius: 4px;
+    }
+  
+    .container::-webkit-scrollbar-thumb:hover {
+      background: var(--secondary-color); /* Thumb color on hover */
+    }
     .menuToggle {
       display: block;
     }
@@ -255,6 +439,7 @@
     .profile{
       flex-direction: column;
     }
+    
   }
   .skillCategory {
     margin-bottom: 2rem;
