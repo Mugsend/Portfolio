@@ -3,7 +3,7 @@ import Image from 'next/image';
 import utilStyles from '../styles/utils.module.css';
 import profileImg from '../public/images/profile.jpg';
 import { useEffect, useState } from 'react';
-
+import { motion } from 'framer-motion';
 function Navbar() {
 	const [menuOpen, setMenuOpen] = useState(false);
 	const [theme, setTheme] = useState("light");
@@ -36,13 +36,13 @@ function Navbar() {
 			<nav className={utilStyles.navbar}>
 				<div className={utilStyles.logo}>MUGSEND</div>
 				<div className={utilStyles.navRight}>
-          <button className={utilStyles.themeToggle} onClick={toggleTheme}>
-            {theme === 'light' ? '🌙' : '☀️'}
-          </button>
-          <button className={utilStyles.menuToggle} onClick={toggleMenu}>
-            {menuOpen ? '✕' : '☰'}
-          </button>
-        </div>
+					<button className={utilStyles.themeToggle} onClick={toggleTheme}>
+						{theme === 'light' ? '🌙' : '☀️'}
+					</button>
+					<button className={utilStyles.menuToggle} onClick={toggleMenu}>
+						{menuOpen ? '✕' : '☰'}
+					</button>
+				</div>
 				<ul className={`${utilStyles.navLinks} ${menuOpen ? utilStyles.open : ''}`}>
 					<li><a href="#skills" onClick={closeMenu}>Skills</a></li>
 					<li><a href="#clients" onClick={closeMenu}>Clients</a></li>
@@ -50,7 +50,7 @@ function Navbar() {
 					<li><a href="#contact" onClick={closeMenu}>Contact</a></li>
 					<li><a href="#about" onClick={closeMenu}>About</a></li>
 				</ul>
-				
+
 			</nav>
 			<div className={`${utilStyles.menuOverlay} ${menuOpen ? utilStyles.open : ''}`} onClick={closeMenu} />
 		</>
@@ -59,11 +59,25 @@ function Navbar() {
 
 function Header() {
 	return (
+
 		<div className={utilStyles.header}>
-			<h1>Hey!</h1>
-			<h2>Welcome to my Portfolio.</h2>
+			<motion.div
+				initial={{ opacity: 0, y: 50 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.6 }}
+				viewport={{ once: true }}
+			>
+				<h1>Hey!</h1></motion.div>
+			<motion.div
+				initial={{ opacity: 0, y: 50 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.6, delay: 0.2 }}
+				viewport={{ once: true }}
+			>
+				<h2>Welcome to my Portfolio.</h2></motion.div>
 			<Profile />
 		</div>
+
 	);
 }
 
@@ -95,6 +109,7 @@ function Profile() {
 function Projects() {
 	const [projects, setProjects] = useState([]);
 
+
 	useEffect(() => {
 		var myHeaders = new Headers();
 		myHeaders.append(
@@ -123,28 +138,39 @@ function Projects() {
 			.catch((error) => console.log('error', error));
 	}, []);
 	return (
+
 		<div className={utilStyles.window} id='projects'>
 			<div className={utilStyles.title}>Personal projects</div>
 			<p className={utilStyles.sectionTagline}>
-				From audio plugins to web applications, I’ve built projects that push boundaries and deliver exceptional user experiences.
+				My projects span audio plugins, web applications, and more, combining innovation with user-centric design to create exceptional experiences..
 			</p>
-			<div className={utilStyles.container}>
+
+			<div className={`${utilStyles.container} projectContainer`}>
 				{projects.map((project, index) => (
+
 					<Project key={index} {...project} />
 				))}
 			</div>
+
 		</div>
 	);
 }
 function Project({ name, description, url }) {
 	return (
-		<div className={utilStyles.content} >
-			<div className={utilStyles.title}>{name}</div>
-			<p className={utilStyles.description}>{description}</p>
-			<a className={utilStyles.link_btn} target="_blank" href={url}>
-				Source
-			</a>
-		</div>
+		<motion.div
+			initial={{ opacity: 0, y: 50 }}
+			whileInView={{ opacity: 1, y: 0 }}
+			transition={{ duration: 0.6 }}
+			viewport={{ once: true }}
+		>
+			<div className={utilStyles.content} >
+				<div className={utilStyles.title}>{name}</div>
+				<p className={utilStyles.description}>{description}</p>
+				<a className={utilStyles.link_btn} target="_blank" href={url}>
+					Source
+				</a>
+			</div>
+		</motion.div>
 	);
 }
 
@@ -177,23 +203,36 @@ function Skills() {
 		<div className={utilStyles.window} id="skills">
 			<div className={utilStyles.title}>Skills & Technologies</div>
 			<p className={utilStyles.sectionTagline}>
-				With a diverse skill set spanning programming languages, frameworks, and cloud technologies, I deliver robust and scalable solutions.
+				I combine programming, frameworks, and cloud technologies to build solutions that are reliable, scalable, and tailored to client needs.
 			</p>
 			<div className={utilStyles.container}>
 				{Object.entries(skills).map(([category, { skills: skillList, icon }]) => (
-					<div key={category} className={utilStyles.skillCategory}>
+					<div key={category} className={`${utilStyles.skillCategory} ${utilStyles.content}`}>
 						<h3 className={utilStyles.categoryTitle}>
 							<span className="material-icons">{icon}</span> {category}
 						</h3>
-						<div className={utilStyles.skillList}>
-							{skillList.map((skill, index) => (
-								<div key={index} className={utilStyles.skillItem}>
-									{skill}
-								</div>
-							))}
-						</div>
+						<motion.div
+							initial={{ opacity: 0, y: 50 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.6 }}
+							viewport={{ once: true }}
+						>
+							<div className={utilStyles.skillList}>
+
+								{skillList.map((skill, index) => (
+									<div key={index} className={utilStyles.skillItem}>
+
+										{skill}
+
+									</div>
+								))}
+							</div>
+						</motion.div>
 					</div>
+
 				))}
+
+
 			</div>
 		</div>
 	);
@@ -208,21 +247,40 @@ function Contact() {
 				Ready to bring your ideas to life? Let’s collaborate and create something amazing!
 			</p>
 			<div className={utilStyles.container}>
-				<div className={utilStyles.contactCard} onClick={() => window.location.href = "mailto:chaudharysaurabh93063@gmail.com"}>
-					<span className="material-icons">email</span>
-					<h3>Email Me</h3>
-					<p>Get in touch directly via email.</p>
-				</div>
-				<div className={utilStyles.contactCard} onClick={() => window.open("https://www.linkedin.com/in/saurabh-chaudhary-b6a6a9266", "_blank")}>
-					<span className="material-icons">people</span>
-					<h3>Connect on LinkedIn</h3>
-					<p>Let’s connect and grow our professional network.</p>
-				</div>
-				<div className={utilStyles.contactCard} onClick={() => window.open("https://github.com/Mugsend", "_blank")}>
-					<span className="material-icons">code</span>
-					<h3>Check Out My GitHub</h3>
-					<p>Explore my projects and contributions.</p>
-				</div>
+				<motion.div
+					initial={{ opacity: 0, y: 50 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.6 }}
+					viewport={{ once: true }}
+				>
+					<div className={`${utilStyles.contactCard} ${utilStyles.content}`} onClick={() => window.location.href = "mailto:chaudharysaurabh93063@gmail.com"}>
+						<span className="material-icons">email</span>
+						<h3>Email Me</h3>
+						<p>Get in touch directly via email.</p>
+					</div>
+				</motion.div>
+				<motion.div
+					initial={{ opacity: 0, y: 50 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.6 }}
+					viewport={{ once: true }}
+				>
+					<div className={`${utilStyles.contactCard} ${utilStyles.content}`} onClick={() => window.open("https://www.linkedin.com/in/saurabh-chaudhary-b6a6a9266", "_blank")}>
+						<span className="material-icons">people</span>
+						<h3>Connect on LinkedIn</h3>
+						<p>Let’s connect and grow our professional network.</p>
+					</div></motion.div>
+				<motion.div
+					initial={{ opacity: 0, y: 50 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.6 }}
+					viewport={{ once: true }}
+				>
+					<div className={`${utilStyles.contactCard} ${utilStyles.content}`} onClick={() => window.open("https://github.com/Mugsend", "_blank")}>
+						<span className="material-icons">code</span>
+						<h3>Check Out My GitHub</h3>
+						<p>Explore my projects and contributions.</p>
+					</div></motion.div>
 			</div>
 		</div>
 	);
@@ -333,11 +391,19 @@ function Clients() {
 		<div className={utilStyles.window} id="clients">
 			<div className={utilStyles.title}>Clients & Work</div>
 			<p className={utilStyles.sectionTagline}>
-				I’ve collaborated with clients across industries to create tailored solutions that drive growth and innovation.
+				I create tailored solutions that solve real-world problems, helping clients achieve their goals efficiently and effectively.
 			</p>
+
 			<div className={utilStyles.container}>
+
 				{clients.map((client, index) => (
-					<Client key={index} {...client} />
+					<motion.div
+						initial={{ opacity: 0, y: 50 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.6 }}
+						viewport={{ once: true }}
+					>
+						<Client key={index} {...client} /></motion.div>
 				))}
 			</div>
 		</div>
@@ -348,12 +414,12 @@ function Client({ name, project, description }) {
 	return (
 		<div className={utilStyles.content}>
 			<div className={utilStyles.title}>{name}</div>
-			<div className={utilStyles.description}>{project}
-				<p
-					className={utilStyles.details}
-					dangerouslySetInnerHTML={{ __html: description }}
-				/>
-			</div>
+			<div className={utilStyles.briefDescription}>{project}</div>
+			<p
+				className={utilStyles.description}
+				dangerouslySetInnerHTML={{ __html: description }}
+			/>
+
 		</div>
 	);
 }
@@ -368,11 +434,13 @@ export default function Homepage() {
 
 			<Navbar />
 			<Header />
-			<Skills />
-			<Clients />
-			<Projects />
-			<Contact />
-			<About />
+			<div className={utilStyles.mainContent}>
+				<Skills />
+				<Clients />
+				<Projects />
+				<Contact />
+				<About />
+			</div>
 		</>
 	);
 }

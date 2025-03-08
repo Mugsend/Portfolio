@@ -1,52 +1,57 @@
 :root {
-    --primary-color: #1a73e8; /* Google Blue */
-    --secondary-color: #34a853; /* Google Green */
-    --background-light: #ffffff;
-    --background-dark: #121212;
-    --text-light: #333333;
-    --text-dark: #e0e0e0;
-    --card-background-light: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
-    --card-background-dark: rgba(18, 18, 18, 0.8); /* Semi-transparent black */
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --blur: blur(10px); /* Blur effect for glass morphism */
-    --transition: all 0.3s ease;
-  }
-  
-  [data-theme="dark"] {
-    --background-light: #121212;
-    --background-dark: #ffffff;
-    --text-light: #e0e0e0;
-    --text-dark: #333333;
-    --card-background-light: rgba(18, 18, 18, 0.8); /* Semi-transparent black */
-    --card-background-dark: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
-  }
-  
-  body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: linear-gradient(
-      135deg,
-      rgba(245, 245, 245, 0.9), /* Light background */
-      rgba(230, 230, 230, 0.9) /* Light background */
-    ), ; /* Optional: Add a background image */
-    background-size: cover;
-    background-attachment: fixed;
-    color: var(--text-light);
-    transition: var(--transition);
-  }
-  
-  [data-theme="dark"] body {
-    background: linear-gradient(
-      135deg,
-      rgba(18, 18, 18, 0.9), /* Dark background */
-      rgba(30, 30, 30, 0.9) /* Dark background */
-    ), url('/images/background-dark.jpg'); /* Optional: Add a dark background image */
-  }
-  
-  * {
-    padding: 0;
-    margin: 0;
-    border: none;
-    box-sizing: border-box;
-  }
-  
+  --primary-color: #1a73e8;
+  /* Google Blue */
+  --secondary-color: #34a853;
+  /* Google Green */
+  --background-light: #f5f5f5;
+  /* Light background */
+  --background-dark: #0a0a0a;
+  /* Dark background */
+  --text-light: #333333;
+  /* Dark text for light theme */
+  --text-dark: #e0e0e0;
+  /* Light text for dark theme */
+  --card-background-light: rgba(255, 255, 255, 0.9);
+  /* Semi-transparent white */
+  --card-background-dark: rgba(30, 30, 30, 0.9);
+  /* Semi-transparent dark gray */
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --blur: blur(10px);
+  --transition: all 0.3s ease;
+}
+
+[data-theme="dark"] {
+  --background-light: #0a0a0a;
+  /* Dark background */
+  --background-dark: #f5f5f5;
+  /* Light background */
+  --text-light: #e0e0e0;
+  /* Light text for dark theme */
+  --text-dark: #333333;
+  /* Dark text for light theme */
+  --card-background-light: rgba(30, 30, 30, 0.9);
+  /* Semi-transparent dark gray */
+  --card-background-dark: rgba(255, 255, 255, 0.9);
+  /* Semi-transparent white */
+}
+
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background-light);
+  color: var(--text-light);
+  transition: var(--transition);
+}
+
+b {
+  color: var(--secondary-color);
+}
+
+
+* {
+  padding: 0;
+  margin: 0;
+  border: none;
+  box-sizing: border-box;
+}
