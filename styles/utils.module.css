@@ -67,6 +67,24 @@
   color: var(--primary-color);
 }
 
+.menuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.menuOverlay.open {
+  opacity: 1;
+  visibility: visible;
+}
 /* Header */
 .header {
   text-align: center;
@@ -400,6 +418,6 @@
   }
 
   .mainContent {
-    padding: 0 1rem;
+    padding: 0 0.7rem;
   }
 }

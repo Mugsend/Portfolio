@@ -287,42 +287,79 @@ function Contact() {
 }
 function About() {
 	return (
-		<div className={utilStyles.window} id="about">
-			<div className={utilStyles.title}>About Me</div>
-
-			<div className={utilStyles.container}>
-				<div className={utilStyles.content}>
-					<p>
-						👋 Hi, I'm Mugsend, a passionate developer specializing in <b>WinUI 3, Next.js,
-							and cross-platform applications</b>. I love building innovative solutions
-						for desktop, mobile, and web platforms.
-					</p>
-					<p>
-						With experience in <b>C#, JavaScript, Python, and UI/UX design</b>, I create
-						modern applications that are both functional and aesthetically pleasing.
-					</p>
-					<p>
-						I am always open to <b>freelance projects, collaborations, and new opportunities</b>.
-					</p>
-				</div>
-				<div className={utilStyles.links}>
-					<a href="https://github.com/mugsend" target="_blank" className={utilStyles.link_btn}>
-						🔗 GitHub
-					</a>
-					<a href="https://www.linkedin.com/in/saurabh-chaudhary-b6a6a9266" target="_blank" className={utilStyles.link_btn}>
-						🔗 LinkedIn
-					</a>
-					<a href="mailto:chaudharysaurabh93063@gmail.com" className={utilStyles.link_btn}>
-						📧 Email Me
-					</a>
-					<a href="https://portfolio-mugsend.vercel.app/" target="_blank" className={utilStyles.link_btn}>
-						🌍 Portfolio
-					</a>
-				</div>
-			</div>
+	  <div className={utilStyles.window} id="about">
+		<div className={utilStyles.title}>About Me</div>
+		<div className={utilStyles.container}>
+		  <div className={utilStyles.content}>
+			<p>
+			  👋 Hi, I'm Mugsend, a passionate developer specializing in <b>WinUI 3, Next.js,
+			  and cross-platform applications</b>. I love building innovative solutions
+			  for desktop, mobile, and web platforms.
+			</p>
+			<p>
+			  With experience in <b>C#, JavaScript, Python, and UI/UX design</b>, I create
+			  modern applications that are both functional and aesthetically pleasing.
+			</p>
+			<p>
+			  I am always open to <b>freelance projects, collaborations, and new opportunities</b>.
+			</p>
+		  </div>
+  
+		  {/* Books Section */}
+		  <div className={utilStyles.content}>
+			<h3 className={utilStyles.subtitle}>Books I Love</h3>
+			<ul className={utilStyles.list}>
+			  <li><b>Clean Code</b> by Robert C. Martin</li>
+			  <li><b>The Pragmatic Programmer</b> by Andrew Hunt and David Thomas</li>
+			  <li><b>Designing Data-Intensive Applications</b> by Martin Kleppmann</li>
+			  <li><b>You Don't Know JS</b> by Kyle Simpson</li>
+			</ul>
+		  </div>
+  
+		  {/* Games Section */}
+		  <div className={utilStyles.content}>
+			<h3 className={utilStyles.subtitle}>Games I Enjoy</h3>
+			<ul className={utilStyles.list}>
+			<li><b>Factorio</b></li>
+			<li><b>Turing Complete</b></li>
+			<li><b>Chants of Sennaar</b></li>
+			  <li><b>The Legend of Zelda: Breath of the Wild</b></li>
+			  <li><b>Portal 2</b></li>
+			  <li><b>Hades</b></li>
+			  <li><b>Stardew Valley</b></li>
+			</ul>
+		  </div>
+  
+		  {/* LeetCode Problems Section */}
+		  <div className={utilStyles.content}>
+			<h3 className={utilStyles.subtitle}>Favorite LeetCode Problems</h3>
+			<ul className={utilStyles.list}>
+			  <li><b>Two Sum</b> (Easy)</li>
+			  <li><b>Merge Intervals</b> (Medium)</li>
+			  <li><b>Longest Palindromic Substring</b> (Medium)</li>
+			  <li><b>Trapping Rain Water</b> (Hard)</li>
+			</ul>
+		  </div>
+  
+		  {/* Links */}
+		  <div className={utilStyles.links}>
+			<a href="https://github.com/mugsend" target="_blank" className={utilStyles.link_btn}>
+			  🔗 GitHub
+			</a>
+			<a href="https://www.linkedin.com/in/saurabh-chaudhary-b6a6a9266" target="_blank" className={utilStyles.link_btn}>
+			  🔗 LinkedIn
+			</a>
+			<a href="mailto:chaudharysaurabh93063@gmail.com" className={utilStyles.link_btn}>
+			  📧 Email Me
+			</a>
+			<a href="https://portfolio-mugsend.vercel.app/" target="_blank" className={utilStyles.link_btn}>
+			  🌍 Portfolio
+			</a>
+		  </div>
 		</div>
+	  </div>
 	);
-}
+  }
 function Clients() {
 	const clients = [
 		{
