@@ -228,7 +228,6 @@
 .sectionTagline {
   font-size: 1.1rem;
   color: var(--text-light);
-  text-align: center;
   margin: 1.5rem 0;
   font-weight: 500;
   line-height: 1.6;
@@ -363,6 +362,58 @@
   color: white;
 }
 
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: var(--text-light);
+}
+
+.list li b {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Subtitle Styles */
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+
+.footer {
+  padding: 4rem 2rem;
+  background-color: var(--card-background-light);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.footer .socialLinks {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.footer .socialLinks a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.footer .socialLinks a:hover {
+  color: var(--secondary-color);
+}
 /* Responsive Design */
 @media (max-width: 768px) {
   .menuToggle {
