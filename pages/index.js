@@ -4,6 +4,7 @@ import utilStyles from '../styles/utils.module.css';
 import profileImg from '../public/images/profile.jpg';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+
 function Navbar() {
 	const [menuOpen, setMenuOpen] = useState(false);
 	const [theme, setTheme] = useState("light");
@@ -40,17 +41,17 @@ function Navbar() {
 						{theme === 'light' ? '🌙' : '☀️'}
 					</button>
 					<ul className={`${utilStyles.navLinks} ${menuOpen ? utilStyles.open : ''}`}>
-					<li><a href="#skills" onClick={closeMenu}>Skills</a></li>
-					<li><a href="#clients" onClick={closeMenu}>Clients</a></li>
-					<li><a href="#projects" onClick={closeMenu}>Projects</a></li>
-					<li><a href="#contact" onClick={closeMenu}>Contact</a></li>
-					<li><a href="#about" onClick={closeMenu}>About</a></li>
-				</ul>
+						<li><a href="#skills" onClick={closeMenu}>Skills</a></li>
+						<li><a href="#clients" onClick={closeMenu}>Clients</a></li>
+						<li><a href="#projects" onClick={closeMenu}>Projects</a></li>
+						<li><a href="#contact" onClick={closeMenu}>Contact</a></li>
+						<li><a href="#about" onClick={closeMenu}>About</a></li>
+					</ul>
 					<button className={utilStyles.menuToggle} onClick={toggleMenu}>
 						{menuOpen ? '✕' : '☰'}
 					</button>
 				</div>
-				
+
 
 			</nav>
 			<div className={`${utilStyles.menuOverlay} ${menuOpen ? utilStyles.open : ''}`} onClick={closeMenu} />
@@ -488,23 +489,25 @@ function Client({ name, project, description }) {
 	);
 }
 
+function MainContent() {
+	return (<div className={utilStyles.mainContent}>
+		<Skills />
+		<Clients />
+		<Projects />
+		<Contact />
+		<About />
+	</div>);
 
+}
 export default function Homepage() {
 	return (
 		<>
 			<Head>
 				<title>Portfolio</title>
 			</Head>
-
 			<Navbar />
 			<Header />
-			<div className={utilStyles.mainContent}>
-				<Skills />
-				<Clients />
-				<Projects />
-				<Contact />
-				<About />
-			</div>
+			<MainContent />
 			<Footer />
 		</>
 	);

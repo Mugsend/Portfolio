@@ -13,6 +13,7 @@ export default function Document() {
       <meta name="description" content="Saurabh Chaudhary's Portfolio - A showcase of my skills, projects, and experience." />
       <meta name="keywords" content="portfolio, developer, next.js, react, winui, flutter" />
       <meta name="author" content="Saurabh Chaudhary" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
       </Head>
       <body>
         <Main />
